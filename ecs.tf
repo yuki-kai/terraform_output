@@ -20,10 +20,10 @@ resource "aws_ecs_task_definition" "ecs_task_definition_output" {
   container_definitions = jsonencode([
     {
       name  = "terraform-output"
-      image = "144560605492.dkr.ecr.ap-northeast-1.amazonaws.com/ecr-repository-output:latest",
+      image = "144560605492.dkr.ecr.ap-northeast-1.amazonaws.com/nextjs-app:latest",
       portMappings = [
         {
-          containerPort = 80
+          containerPort = 3000
           "protocol"    = "tcp",
         }
       ],
