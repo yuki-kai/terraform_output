@@ -51,6 +51,12 @@ resource "aws_ecs_service" "ecs_service_output" {
     assign_public_ip = true
   }
 
+  load_balancer {
+    target_group_arn = aws_lb_target_group.lb_target_group_output.arn
+    container_name   = "terraform-output" // aws_ecs_task_definitionのcontainer_definitionsのnameと同じであること
+    container_port   = 3000
+  }
+
   depends_on = [
     aws_iam_role_policy_attachment.ecs_task_execution_role_policy,
   ]
